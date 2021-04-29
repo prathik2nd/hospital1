@@ -1,0 +1,311 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="hospital_list">
+      <field name="name">hospital list</field>
+      <field name="model">hospital.hospital</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="address"/>
+          <field name="phone"/>
+          <field name="email"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="hospital_action_window">
+      <field name="name">Hospital Master</field>
+      <field name="res_model">hospital.hospital</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+    <record model="ir.ui.view" id="patients_list">
+      <field name="name">Patients list</field>
+      <field name="model">hospital.patients</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="address"/>
+          <field name="age"/>
+          <field name="dob"/>
+          <field name="phone"/>
+          <field name="email"/>
+        </tree>
+      </field>
+    </record>
+
+
+
+    <record model="ir.actions.act_window" id="patients_action_window">
+      <field name="name">Patients Master</field>
+      <field name="res_model">hospital.patients</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+    <record model="ir.ui.view" id="department_list">
+      <field name="name">Department list</field>
+      <field name="model">hospital.department</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="desc"/>
+        </tree>
+      </field>
+    </record>
+
+
+
+    <record model="ir.actions.act_window" id="department_action_window">
+      <field name="name">Department Master</field>
+      <field name="res_model">hospital.department</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+    <record model="ir.ui.view" id="doctor_list">
+      <field name="name">Doctor list</field>
+      <field name="model">hospital.doctor</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="dept_id"/>
+          <field name="address"/>
+          <field name="phone"/>
+          <field name="email"/>
+        </tree>
+      </field>
+    </record>
+
+
+
+    <record model="ir.actions.act_window" id="doctor_action_window">
+      <field name="name">Doctor Master</field>
+      <field name="res_model">hospital.doctor</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <record model="ir.ui.view" id="labtest_list">
+      <field name="name">Labtest list</field>
+      <field name="model">hospital.labtest</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="descri"/>
+          <field name="rate"/>
+        </tree>
+      </field>
+    </record>
+
+
+
+    <record model="ir.actions.act_window" id="labtest_action_window">
+      <field name="name">Labtest Master</field>
+      <field name="res_model">hospital.labtest</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+    <record model="ir.ui.view" id="medicine_list">
+      <field name="name">medicine list</field>
+      <field name="model">hospital.medicine</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="descri"/>
+          <field name="rate"/>
+        </tree>
+      </field>
+    </record>
+
+
+
+    <record model="ir.actions.act_window" id="medicine_action_window">
+      <field name="name">medicine Master</field>
+      <field name="res_model">hospital.medicine</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+    <record model="ir.ui.view" id="registration_list">
+      <field name="name">registration list</field>
+      <field name="model">hospital.registration</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="patient_id"/>
+          <field name="dept_id"/>
+          <field name="doct_id"/>
+          <field name="cdate"/>
+          <field name="phone"/>
+          <field name="email"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="registration_view_form" model="ir.ui.view">
+      <field name="name">model.registration.view.form</field>
+      <field name="model">hospital.registration</field>
+      <field name="arch" type="xml">
+        <header>
+          <button name="action_draft" type="object" string="Draft"/>
+          <button name="action_done" type="object" string="Done"/>
+          <button name="action_cancel" type="object" string="Cancel"/>
+
+          <field name="state" string="" widget="statusbar" statusbar_visible="draft,done,cancel"/>
+        </header>
+        <form string="">
+          <sheet>
+            <notebook>
+              <page name="registration" string="Registration">
+                <group col="4">
+                  <field name="name"/>
+                  <field name="patient_id"/>
+                  <field name="dept_id"/>
+                  <field name="doct_id"/>
+                  <field name="cdate"/>
+                  <field name="phone"/>
+                  <field name="email"/>
+                  <field name="tests" widget='many2many_tags' />
+                </group>
+              </page>
+            </notebook>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+
+
+    <record model="ir.actions.act_window" id="registration_action_window">
+      <field name="name">registration Master</field>
+      <field name="res_model">hospital.registration</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+
+    <record model="ir.ui.view" id="invoice_list">
+      <field name="name">invoice list</field>
+      <field name="model">hospital.invoice</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="patient_id"/>
+          <field name="cdate"/>
+          <field name="remarks"/>
+        </tree>
+      </field>
+    </record>
+
+
+
+    <record id="invoice_view_form" model="ir.ui.view">
+      <field name="name">model.invoice.view.form</field>
+      <field name="model">hospital.invoice</field>
+      <field name="arch" type="xml">
+        <form string="">
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="patient_id"/>
+              <field name="cdate"/>
+              <field name="remarks"/>
+              <field name="Madiname" widget='many2many_tags'/>
+           </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="invoice_action_window">
+      <field name="name">invoice Master</field>
+      <field name="res_model">hospital.invoice</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+<!-- /////////////////////////////////////////////////////////////////////////////////////// -->
+
+<record id="model_name_view_form" model="ir.ui.view">
+      <field name="name">model.name.view.form</field>
+      <field name="model">quotation.order</field>
+      <field name="arch" type="xml">
+        <form string="quotation order">
+         
+          <group>
+            
+              <field name="name"/>
+              <field name="cdate"/>
+              <field name="note"/>   
+              <field name="order_ids">
+                <tree editable="bottom">
+                  <field name="name" />
+                  <field name="product_id" />
+                  <field name="price" />
+                  <field name="qty" />
+                </tree>
+              </field>
+          
+          </group>       
+
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="quotation_action_window">
+      <field name="name">Quotation </field>
+      <field name="res_model">quotation.order</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+
+
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="Hospitall" id="hospital_menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Master" id="hospital_menu_1" parent="hospital_menu_root"/>
+    <menuitem name="Transaction" id="hospital_menu_2" parent="hospital_menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="Hospital Info" id="hospital_menu_1_list" parent="hospital_menu_1" action="hospital_action_window"/>
+
+
+    <menuitem name="Patients Info" id="patients_menu_2_list" parent="hospital_menu_1" action="patients_action_window"/>
+
+    <menuitem name="Department Info" id="department_menu_3_list" parent="hospital_menu_1" action="department_action_window"/>
+
+    <menuitem name="Doctor Info" id="doctor_menu_4_list" parent="hospital_menu_1" action="doctor_action_window"/>
+
+    <menuitem name="Lab Test Info" id="labtest_menu_5_list" parent="hospital_menu_1" action="labtest_action_window"/>
+
+    <menuitem name="Medicine Info" id="medicine_menu_6_list" parent="hospital_menu_1" action="medicine_action_window"/>
+
+    <menuitem name="Registration" id="doctor_menu_1_list" parent="hospital_menu_2" action="registration_action_window"/>
+    <menuitem name="Invoice" id="invoice_menu_2_list" parent="hospital_menu_2" action="invoice_action_window"/>
+
+       <menuitem name="One 2 Many" id="invoice_menu_2_list" parent="hospital_menu_2" action="quotation_action_window"/>
+
+  </data>
+</odoo>
